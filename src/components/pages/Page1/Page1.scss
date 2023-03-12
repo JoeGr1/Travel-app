@@ -1,0 +1,17 @@
+@use "../../../styles/partials/mixins.scss" as *;
+@use "../../../styles/partials/variables" as *;
+
+.page1 {
+  margin: $mobile-margin;
+
+  @include flex(space-between, center, row);
+
+  @include tablet {
+    margin: $tablet-margin;
+  }
+
+  @include desktop {
+    margin: $desktop-margin;
+    max-width: 102rem;
+  }
+}
