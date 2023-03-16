@@ -2,10 +2,11 @@ import React from "react";
 
 import "./HomePage.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const HomePage = () => {
-  const [destinations, setDestination] = useState(null);
+  const url = useParams();
+  console.log(url);
 
   return (
     <div className="home-page">

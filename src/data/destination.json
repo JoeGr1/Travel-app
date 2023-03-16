@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Belize",
+    "season": "summer",
+    "occasion": "honeymoon",
+    "continent": "africa"
+  },
+  {
+    "name": "Costa Rica",
+    "season": "spring",
+    "occasion": "stag",
+    "continent": "africa"
+  },
+  {
+    "name": "El Salvador",
+    "season": "winter",
+    "occasion": "girls",
+    "continent": "europe"
+  },
+  {
+    "name": "Guatemala",
+    "season": "summer",
+    "occasion": "family",
+    "continent": "south-america"
+  },
+  {
+    "name": "Honduras",
+    "season": "summer",
+    "occasion": "honeymoon",
+    "continent": "europe"
+  },
+  {
+    "name": "Nicaragua",
+    "season": "winter",
+    "occasion": "honeymoon",
+    "continent": "north-america"
+  },
+  {
+    "name": "Panama",
+    "season": "spring",
+    "occasion": "honeymoon",
+    "continent": "africa"
+  }
+]
