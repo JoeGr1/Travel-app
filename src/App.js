@@ -20,6 +20,10 @@ function App() {
             path="/:season/:occasion/:continent"
             element={<DestinationsPage />}
           ></Route>
+          <Route
+            path="//:season/:occasion/:continent/:countryId"
+            element={<DestinationsPage />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

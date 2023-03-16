@@ -1,14 +1,19 @@
-const DestinationCard = ({ clickHandler, destination }) => {
+import { Link, useParams } from "react-router-dom";
+
+const DestinationCard = ({ clickHandler, destination, id }) => {
+  const { season, occasion, continent } = useParams();
+
   return (
-    <article
-      key={crypto.randomUUID()}
-      className="destination"
-      onClick={() => {
-        clickHandler(destination);
-      }}
-    >
-      <h1>{destination.name}</h1>
-    </article>
+    <Link to={`/${season}/${occasion}/${continent}/${id}`}>
+      <article
+        className="destination"
+        onClick={() => {
+          clickHandler(destination);
+        }}
+      >
+        <h1>{destination.name}</h1>
+      </article>
+    </Link>
   );
 };
 
