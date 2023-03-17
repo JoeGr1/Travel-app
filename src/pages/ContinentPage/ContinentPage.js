@@ -55,7 +55,7 @@ const ContinentPage = () => {
       <div className="destinations__card-wrapper">
         {filteredDestinations.map((destination) => {
           return (
-            <Link to={`/${continent}-all/${destination.id}`}>
+            <Link key={uuid()} to={`/${continent}-all/${destination.id}`}>
               <DestinationCard
                 key={uuid()}
                 clickHandler={clickHandler}

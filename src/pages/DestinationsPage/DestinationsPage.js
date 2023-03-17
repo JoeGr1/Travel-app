@@ -49,6 +49,27 @@ const DestinationsPage = () => {
     navigate(-1);
   };
 
+  // POST REQUEST
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const uploadComment = async () => {
+      await axios.post(`${BACKEND_URL}/destinations/${countryId}/comments`, {
+        name: `John`,
+        comment: `${e.target.comment.value}`,
+      });
+      console.log("works?");
+    };
+
+    try {
+      uploadComment();
+      e.target.reset();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="destinations">
       <h2 className="season__btn-back" onClick={handleClick}>
@@ -60,7 +81,7 @@ const DestinationsPage = () => {
         {filteredDestinations.map((destination) => {
           const id = destination.id;
           return (
-            <Link to={`/${season}/${occasion}/${continent}/${id}`}>
+            <Link key={uuid()} to={`/${season}/${occasion}/${continent}/${id}`}>
               <DestinationCard
                 key={uuid()}
                 clickHandler={clickHandler}
@@ -72,7 +93,9 @@ const DestinationsPage = () => {
         })}
       </div>
 
-      {currentDestination && <Modal destination={currentDestination} />}
+      {currentDestination && (
+        <Modal destination={currentDestination} submitHandler={submitHandler} />
+      )}
     </div>
   );
 };
