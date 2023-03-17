@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/:continent" element={<ContinentPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/:season" element={<SeasonPage />} />
           <Route path="/:season/:occasion" element={<OccasionPage />} />
