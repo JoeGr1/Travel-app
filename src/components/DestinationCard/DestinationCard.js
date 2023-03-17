@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import "./DestinationCard.scss";
 
 const DestinationCard = ({ clickHandler, destination, id }) => {
   const { season, occasion, continent } = useParams();
@@ -11,7 +12,7 @@ const DestinationCard = ({ clickHandler, destination, id }) => {
           clickHandler(destination);
         }}
       >
-        <h1>{destination.name}</h1>
+        <h1 className="destination__title">{destination.name}</h1>
       </article>
     </Link>
   );

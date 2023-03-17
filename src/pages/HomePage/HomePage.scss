@@ -1,17 +1,86 @@
-// @use "../../../styles/partials/mixins.scss" as *;
-// @use "../../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
-// .home-page {
-//   margin: $mobile-margin;
+.home-page {
+  margin: $mobile-margin;
 
-//   @include flex(space-between, center, row);
+  @include flex(space-between, center, column);
 
-//   @include tablet {
-//     margin: $tablet-margin;
-//   }
+  @include tablet {
+    margin: $tablet-margin;
+  }
 
-//   @include desktop {
-//     margin: $desktop-margin;
-//     max-width: 102rem;
-//   }
-// }
+  @include desktop {
+    margin: $desktop-margin;
+    max-width: 102rem;
+  }
+
+  &__title {
+    color: $text-primary;
+    margin: 3rem;
+    font-size: 3.6rem;
+  }
+
+  &__subtitle {
+    color: $text-primary;
+  }
+
+  &__card-wrapper {
+    @include flex(space-between, center, row);
+    flex-wrap: wrap;
+
+    @include tablet {
+      width: 90%;
+      margin: 3rem auto;
+    }
+
+    @include desktop {
+      width: 60%;
+    }
+  }
+
+  &__season-card {
+    width: 25rem;
+    height: 25rem;
+    border: 2px $border-color solid;
+    border-radius: 4px;
+    vertical-align: bottom;
+    object-fit: contain;
+    margin: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    &--winter {
+      background: url(../../assets/images/winter.jpg);
+      background-size: 300%;
+    }
+    &--spring {
+      background-image: url(../../assets/images/spring.jpg);
+      background-size: 100%;
+    }
+    &--summer {
+      background-image: url(../../assets/images/summer.jpg);
+      background-size: 120%;
+    }
+
+    &--autumn {
+      background-image: url(../../assets/images/autumn.jpg);
+      background-size: 300%;
+    }
+  }
+
+  &__card-title {
+    color: $text-secondary;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 25rem;
+    height: 6rem;
+    padding: 2rem;
+    background-color: rgba($text-primary, 0.5);
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

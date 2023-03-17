@@ -14,23 +14,23 @@ const HomePage = () => {
       <h2 className="home-page__subtitle">Choose your season</h2>
       <div className="home-page__card-wrapper">
         {/* { destination.filter((destination) => destination.season === season)} */}
-        <Link to="/winter">
-          <article className="home-page__season-card">
+        <Link to="/winter" className="home-page__link">
+          <article className="home-page__season-card home-page__season-card--winter">
             <h3 className="home-page__card-title">WINTER</h3>
           </article>{" "}
         </Link>
-        <Link to="/spring">
-          <article className="home-page__season-card">
+        <Link to="/spring" className="home-page__link">
+          <article className="home-page__season-card home-page__season-card--spring">
             <h3 className="home-page__card-title">SPRING</h3>
           </article>{" "}
         </Link>
-        <Link to="/summer">
-          <article className="home-page__season-card">
+        <Link to="/summer" className="home-page__link">
+          <article className="home-page__season-card home-page__season-card--summer">
             <h3 className="home-page__card-title">SUMMER</h3>
           </article>{" "}
         </Link>
-        <Link to="/autumn">
-          <article className="home-page__season-card">
+        <Link to="/autumn" className="home-page__link">
+          <article className="home-page__season-card home-page__season-card--autumn">
             <h3 className="home-page__card-title">AUTUMN</h3>
           </article>{" "}
         </Link>

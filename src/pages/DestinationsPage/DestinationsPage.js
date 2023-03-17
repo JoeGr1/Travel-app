@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import "./DestinationsPage.scss";
 
 import json from "../../data/destination.json";
 

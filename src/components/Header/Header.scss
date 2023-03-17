@@ -1,10 +1,14 @@
 @use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/variables" as *;
 
+header {
+  background-color: $bg;
+}
+
 .navbar {
   margin: $mobile-margin;
   padding-top: 1.6rem;
-  @include flex(space-between, center, row);
+  @include flex(flex-start, center, row);
 
   @include tablet {
     margin: $tablet-margin;
@@ -17,8 +21,15 @@
 
   &__logo {
     text-decoration: none;
+    width: 5rem;
+    display: inline-block;
   }
-
+  &__title {
+    color: $text-primary;
+    margin: 0 2rem;
+    font-size: 3.4rem;
+    display: inline-block;
+  }
   &__link-list {
     list-style: none;
   }
@@ -26,5 +37,7 @@
   &__link {
     margin: 0 1rem;
     text-decoration: none;
+    width: 50%;
+    @include flex(flex-start, center, row);
   }
 }
