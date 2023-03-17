@@ -8,7 +8,7 @@ import json from "../../data/destination.json";
 import Modal from "../../components/Modal/Modal";
 
 const ContinentPage = () => {
-  const { continent } = useParams();
+  const { continent, countryId } = useParams();
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const [destinations, setDestinations] = useState(json);
@@ -45,6 +45,27 @@ const ContinentPage = () => {
     navigate(-1);
   };
 
+  // POST REQUEST
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const uploadComment = async () => {
+      await axios.post(`${BACKEND_URL}/destinations/${countryId}/comments`, {
+        name: `John`,
+        comment: `${e.target.comment.value}`,
+      });
+      console.log("works?");
+    };
+
+    try {
+      uploadComment();
+      e.target.reset();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="destinations">
       <h2 className="season__btn-back" onClick={handleClick}>
@@ -67,7 +88,9 @@ const ContinentPage = () => {
         })}
       </div>
 
-      {currentDestination && <Modal destination={currentDestination} />}
+      {currentDestination && (
+        <Modal destination={currentDestination} submitHandler={submitHandler} />
+      )}
     </div>
   );
 };

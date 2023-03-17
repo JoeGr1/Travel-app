@@ -13,11 +13,19 @@ const DestinationsPage = () => {
 
   const [destinations, setDestinations] = useState(json);
   const [currentDestination, setCurrentDestination] = useState(null);
+  const [commentAdded, setCommentAdded] = useState(false);
 
   // GET  REQUEST
   const getDestinations = async () => {
     const { data } = await axios.get(`${BACKEND_URL}/destinations`);
     setDestinations(data);
+
+    // Make sure the modal updates, by using the updated destinations, find the one dest,
+    // setting the current dest
+    const updatedDestination = data.find(
+      (destination) => destination.id === countryId
+    );
+    setCurrentDestination(updatedDestination);
   };
 
   useEffect(() => {
@@ -26,7 +34,7 @@ const DestinationsPage = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [commentAdded]);
 
   const clickHandler = (destination) => {
     setCurrentDestination(destination);
@@ -44,6 +52,8 @@ const DestinationsPage = () => {
     }
   });
 
+  // const getFiltered = () => filteredDestinations;
+
   let navigate = useNavigate();
   const handleClick = () => {
     navigate(-1);
@@ -51,19 +61,22 @@ const DestinationsPage = () => {
 
   // POST REQUEST
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    const uploadComment = async () => {
+    // Set the flag back to false at the start of the form submit, so that we can
+    // submit more than 1 comment in a row
+    setCommentAdded(false);
+
+    try {
       await axios.post(`${BACKEND_URL}/destinations/${countryId}/comments`, {
         name: `John`,
         comment: `${e.target.comment.value}`,
       });
-      console.log("works?");
-    };
 
-    try {
-      uploadComment();
+      // We should re-do the get request above, to get the updated destinations
+      setCommentAdded(true);
+
       e.target.reset();
     } catch (err) {
       console.log(err);

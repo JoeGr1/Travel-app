@@ -6,9 +6,10 @@
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30rem;
-  height: 40rem;
+  // width: 60%;
+  // height: 40rem;
   border-radius: 4px;
+  padding: 2rem;
 
   background-color: $bg-card;
   border: 3px solid $bg;
@@ -21,7 +22,33 @@
   &__hash-item {
     color: $text-primary;
   }
-  &__activities-list {
+  &__activity-item {
+    color: $text-primary;
+  }
+
+  &__comment-name {
+    color: $text-primary;
+  }
+
+  &__comment {
+    color: $text-primary;
+  }
+
+  &__comment-date {
+    color: $text-primary;
+  }
+}
+
+.new_comment {
+  &__label {
+    color: $text-primary;
+  }
+
+  &__input {
+    color: $text-primary;
+  }
+
+  &__btn-comment {
     color: $text-primary;
   }
 }

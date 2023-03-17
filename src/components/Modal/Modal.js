@@ -34,7 +34,7 @@ const Modal = ({ destination, submitHandler }) => {
             return (
               <li key={comment.id} className="modal__comment-item">
                 <h4 className="modal__comment-name">{comment.name}</h4>
-                <p className="modal__coment">{comment.comment}</p>
+                <p className="modal__comment">{comment.comment}</p>
                 <p className="modal__comment-date">{comment.timestamp}</p>
               </li>
             );
