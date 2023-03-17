@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.destinations {
+  margin: $mobile-margin;
+
+  @include flex(space-between, center, column);
+
+  @include tablet {
+    margin: $tablet-margin;
+  }
+
+  @include desktop {
+    margin: $desktop-margin;
+    max-width: 102rem;
+  }
+
+  &__title {
+    color: $text-primary;
+    margin: 3rem;
+    font-size: 3.6rem;
+  }
+
+  &__subtitle {
+    color: $text-primary;
+  }
+
+  &__card-wrapper {
+    @include flex(space-between, center, row);
+    flex-wrap: wrap;
+
+    @include tablet {
+      width: 90%;
+      margin: 3rem auto;
+    }
+
+    @include desktop {
+      width: 60%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

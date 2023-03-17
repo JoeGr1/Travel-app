@@ -1,6 +1,7 @@
 @use "./styles/partials/resets";
+@use "./styles/partials/variables" as *;
 
 .app {
-  background-color: black;
-  height: 100vh;
+  background-color: $bg-card;
+  min-height: 100vh;
 }
