@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./OccasionPage.scss";
 
@@ -7,8 +7,16 @@ const OccasionPage = () => {
   console.log(season);
   console.log(occasion);
 
+  let navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="occasion">
+      <h2 className="season__btn-back" onClick={handleClick}>
+        GO BACK
+      </h2>
       <h1 className="occasion__title">{occasion}</h1>
       <h2 className="occasion__subtitle">Choose prefered continent</h2>
       <div className="occasion__card-wrapper">

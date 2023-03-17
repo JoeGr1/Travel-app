@@ -6,6 +6,7 @@ import "./App.scss";
 import SeasonPage from "./pages/SeasonPage/SeasonPage";
 import OccasionPage from "./pages/OccasionPage/OccasionPage";
 import DestinationsPage from "./pages/DestinationsPage/DestinationsPage";
+import ContinentPage from "./pages/ContinentPage/ContinentPage";
 
 function App() {
   return (
@@ -21,8 +22,13 @@ function App() {
             element={<DestinationsPage />}
           ></Route>
           <Route
-            path="//:season/:occasion/:continent/:countryId"
+            path="/:season/:occasion/:continent/:countryId"
             element={<DestinationsPage />}
+          ></Route>
+          <Route path="/:continent-all" element={<ContinentPage />} />
+          <Route
+            path="/:continent-all/:countryId"
+            element={<ContinentPage />}
           ></Route>
         </Routes>
       </BrowserRouter>

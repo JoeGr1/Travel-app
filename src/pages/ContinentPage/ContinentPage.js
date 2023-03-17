@@ -3,29 +3,21 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
-import "./DestinationsPage.scss";
+import "./ContinentPage.scss";
 import json from "../../data/destination.json";
 import Modal from "../../components/Modal/Modal";
 
-const DestinationsPage = () => {
-  const { season, continent, occasion, countryId } = useParams();
+const ContinentPage = () => {
+  const { continent, countryId } = useParams();
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const [destinations, setDestinations] = useState(json);
   const [currentDestination, setCurrentDestination] = useState(null);
-  const [commentAdded, setCommentAdded] = useState(false);
 
   // GET  REQUEST
   const getDestinations = async () => {
     const { data } = await axios.get(`${BACKEND_URL}/destinations`);
     setDestinations(data);
-
-    // Make sure the modal updates, by using the updated destinations, find the one dest,
-    // setting the current dest
-    const updatedDestination = data.find(
-      (destination) => destination.id === countryId
-    );
-    setCurrentDestination(updatedDestination);
   };
 
   useEffect(() => {
@@ -34,7 +26,7 @@ const DestinationsPage = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [commentAdded]);
+  }, []);
 
   const clickHandler = (destination) => {
     setCurrentDestination(destination);
@@ -43,16 +35,10 @@ const DestinationsPage = () => {
   //add condtioning for api call (loading )
 
   const filteredDestinations = destinations.filter((destination) => {
-    if (
-      destination.season === season &&
-      destination.occasion === occasion &&
-      destination.continent === continent
-    ) {
+    if (destination.continent === continent) {
       return true;
     }
   });
-
-  // const getFiltered = () => filteredDestinations;
 
   let navigate = useNavigate();
   const handleClick = () => {
@@ -61,22 +47,19 @@ const DestinationsPage = () => {
 
   // POST REQUEST
 
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
-    // Set the flag back to false at the start of the form submit, so that we can
-    // submit more than 1 comment in a row
-    setCommentAdded(false);
-
-    try {
+    const uploadComment = async () => {
       await axios.post(`${BACKEND_URL}/destinations/${countryId}/comments`, {
         name: `John`,
         comment: `${e.target.comment.value}`,
       });
+      console.log("works?");
+    };
 
-      // We should re-do the get request above, to get the updated destinations
-      setCommentAdded(true);
-
+    try {
+      uploadComment();
       e.target.reset();
     } catch (err) {
       console.log(err);
@@ -92,9 +75,8 @@ const DestinationsPage = () => {
       <h2 className="destinations__subtitle">Choose your destination</h2>
       <div className="destinations__card-wrapper">
         {filteredDestinations.map((destination) => {
-          const id = destination.id;
           return (
-            <Link key={uuid()} to={`/${season}/${occasion}/${continent}/${id}`}>
+            <Link key={uuid()} to={`/${continent}-all/${destination.id}`}>
               <DestinationCard
                 key={uuid()}
                 clickHandler={clickHandler}
@@ -113,4 +95,4 @@ const DestinationsPage = () => {
   );
 };
 
-export default DestinationsPage;
+export default ContinentPage;
