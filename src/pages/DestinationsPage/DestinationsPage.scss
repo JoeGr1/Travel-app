@@ -3,8 +3,7 @@
 
 .destinations {
   margin: $mobile-margin;
-
-  @include flex(space-between, center, column);
+  position: relative;
 
   @include tablet {
     margin: $tablet-margin;
@@ -26,7 +25,7 @@
   }
 
   &__card-wrapper {
-    @include flex(space-between, center, row);
+    @include flex(space-evenly, center, row);
     flex-wrap: wrap;
 
     @include tablet {
@@ -48,6 +47,9 @@
     border-radius: 4px;
     padding: 1rem;
     margin: 1rem;
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
     color: $text-primary;
     &:hover {
       background-color: $bg;

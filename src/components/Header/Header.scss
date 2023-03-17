@@ -7,16 +7,24 @@ header {
 
 .navbar {
   margin: $mobile-margin;
-  padding-top: 1.6rem;
-  @include flex(flex-start, center, row);
+  padding: 1.6rem;
+  @include flex(flex-start, center, column);
 
   @include tablet {
     margin: $tablet-margin;
+    @include flex(flex-start, center, row);
   }
 
   @include desktop {
     margin: $desktop-margin;
     max-width: 102rem;
+  }
+
+  &__wrap {
+    @include flex(center, center, column);
+    @include tablet {
+      @include flex(flex-start, center, row);
+    }
   }
 
   &__logo {
@@ -27,8 +35,12 @@ header {
   &__title {
     color: $text-primary;
     margin: 0 2rem;
-    font-size: 3.4rem;
+    font-size: 2.4rem;
     display: inline-block;
+
+    @include tablet {
+      font-size: 3.4rem;
+    }
   }
   &__link-list {
     list-style: none;
@@ -37,7 +49,12 @@ header {
   &__link {
     margin: 0 1rem;
     text-decoration: none;
-    width: 50%;
-    @include flex(flex-start, center, row);
+    width: 100%;
+    @include flex(center, center, row);
+
+    @include tablet {
+      width: 50%;
+      @include flex(center, center, row);
+    }
   }
 }

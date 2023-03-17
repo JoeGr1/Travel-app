@@ -57,6 +57,7 @@ const DestinationsPage = () => {
   let navigate = useNavigate();
   const handleClick = () => {
     navigate(-1);
+    setCurrentDestination(null);
   };
 
   // POST REQUEST
