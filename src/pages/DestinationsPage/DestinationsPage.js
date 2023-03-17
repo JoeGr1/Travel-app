@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 import json from "../../data/destination.json";
 
 const DestinationsPage = () => {
   const { season, continent, occasion, countryId } = useParams();
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const [destinations, setDestinations] = useState(json);
   const [currentDestination, setCurrentDestination] = useState(null);
+
+  // GET  REQUEST
+  const getDestinations = async () => {
+    const { data } = await axios.get(`${BACKEND_URL}/destinations`);
+    setDestinations(data);
+  };
+
+  useEffect(() => {
+    try {
+      getDestinations();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   const clickHandler = (destination) => {
     setCurrentDestination(destination);
