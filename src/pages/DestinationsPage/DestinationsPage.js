@@ -4,8 +4,8 @@ import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import "./DestinationsPage.scss";
-
 import json from "../../data/destination.json";
+import Modal from "../../components/Modal/Modal";
 
 const DestinationsPage = () => {
   const { season, continent, occasion, countryId } = useParams();
@@ -48,24 +48,20 @@ const DestinationsPage = () => {
     <div className="destinations">
       <h1 className="destinations__title">{continent}</h1>
       <h2 className="destinations__subtitle">Choose your destination</h2>
-      <div className="destinations__card-wrapper"></div>
+      <div className="destinations__card-wrapper">
+        {filteredDestinations.map((destination) => {
+          return (
+            <DestinationCard
+              key={uuid()}
+              clickHandler={clickHandler}
+              destination={destination}
+              id={destination.id}
+            />
+          );
+        })}
+      </div>
 
-      {filteredDestinations.map((destination) => {
-        return (
-          <DestinationCard
-            key={uuid()}
-            clickHandler={clickHandler}
-            destination={destination}
-            id={uuid()}
-          />
-        );
-      })}
-
-      {currentDestination && (
-        <div className="modal">
-          <p className="ptag">{currentDestination.name}</p>
-        </div>
-      )}
+      {currentDestination && <Modal destination={currentDestination} />}
     </div>
   );
 };

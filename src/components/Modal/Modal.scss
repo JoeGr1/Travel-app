@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.modal {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  height: 40rem;
+  border-radius: 4px;
+
+  background-color: $bg-card;
+  border: 3px solid $bg;
+  &__name {
+    color: $text-primary;
+  }
+  &__description {
+    color: $text-primary;
+  }
+  &__hash-item {
+    color: $text-primary;
+  }
+  &__activities-list {
+    color: $text-primary;
+  }
+}
