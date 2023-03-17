@@ -3,31 +3,73 @@
 
 .modal {
   position: absolute;
-  top: 70%;
+  top: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // width: 60%;
-  // height: 40rem;
-  border-radius: 4px;
+  width: 100%;
+  height: 80vh;
+  border-radius: 20px;
   padding: 2rem;
+  overflow: scroll;
 
   background-color: $bg-card;
   border: 3px solid $bg;
+
+  &__img-wrap {
+    background-image: url("../../assets/images/travel.jpg");
+    background-position: 120%;
+    background-size: cover;
+    height: 30rem;
+    width: 100%;
+    border-radius: 20px;
+  }
+
   &__name {
     color: $text-primary;
+    width: 100%;
+    text-align: center;
+    font-size: 4.2rem;
+    margin: 1rem;
   }
   &__description {
     color: $text-primary;
+    margin-bottom: 2rem;
   }
-  &__hash-item {
+
+  &__act {
+    font-size: 2.4rem;
     color: $text-primary;
+    width: 100%;
+    text-align: center;
+
+    margin: 1rem;
+  }
+
+  &__hash-list {
+    @include flex(space-evenly, center, row);
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  &__hash-item {
+    color: darkslategrey;
+    display: inline-block;
   }
   &__activity-item {
     color: $text-primary;
+    font-size: 1.8rem;
+    list-style: none;
+    text-align: center;
+    margin: 1rem;
   }
-
+  &__comment-item {
+    list-style: none;
+    padding: 1rem;
+    margin: 2rem;
+  }
   &__comment-name {
     color: $text-primary;
+    font-size: 1.8rem;
   }
 
   &__comment {
@@ -39,16 +81,41 @@
   }
 }
 
-.new_comment {
+.new-comment {
   &__label {
+    font-size: 2.4rem;
     color: $text-primary;
+    width: 100%;
+    text-align: center;
+
+    margin: 1rem;
   }
 
   &__input {
     color: $text-primary;
+    display: block;
+    resize: none;
+    height: 5rem;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 20px;
+    padding: 2rem;
   }
 
   &__btn-comment {
+    border: 2px $text-primary solid;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem;
     color: $text-primary;
+    width: 15rem;
+    background-color: $bg-card;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:hover {
+      background-color: $bg;
+      transition: 1s;
+    }
   }
 }

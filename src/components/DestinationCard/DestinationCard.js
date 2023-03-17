@@ -5,7 +5,6 @@ const DestinationCard = ({ clickHandler, destination }) => {
   const { season, occasion, continent } = useParams();
 
   return (
-    // <Link to={`/${season}/${occasion}/${continent}/${id}`}>
     <article
       className="destination"
       onClick={() => {
@@ -14,7 +13,6 @@ const DestinationCard = ({ clickHandler, destination }) => {
     >
       <h1 className="destination__title">{destination.name}</h1>
     </article>
-    // </Link>
   );
 };
 
