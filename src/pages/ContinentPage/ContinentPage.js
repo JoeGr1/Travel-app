@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
@@ -47,12 +47,14 @@ const ContinentPage = () => {
       <div className="destinations__card-wrapper">
         {filteredDestinations.map((destination) => {
           return (
-            <DestinationCard
-              key={uuid()}
-              clickHandler={clickHandler}
-              destination={destination}
-              id={destination.id}
-            />
+            <Link to={`/${continent}-all/${destination.id}`}>
+              <DestinationCard
+                key={uuid()}
+                clickHandler={clickHandler}
+                destination={destination}
+                id={destination.id}
+              />
+            </Link>
           );
         })}
       </div>
