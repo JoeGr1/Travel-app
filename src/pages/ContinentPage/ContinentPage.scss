@@ -42,4 +42,16 @@
   &__link {
     text-decoration: none;
   }
+
+  &__btn-back {
+    border: 2px $text-primary solid;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem;
+    color: $text-primary;
+    &:hover {
+      background-color: $bg;
+      transition: 1s;
+    }
+  }
 }

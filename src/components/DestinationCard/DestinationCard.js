@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import "./DestinationCard.scss";
 
-const DestinationCard = ({ clickHandler, destination, id }) => {
+const DestinationCard = ({ clickHandler, destination }) => {
   const { season, occasion, continent } = useParams();
 
   return (

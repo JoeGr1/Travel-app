@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
@@ -40,8 +40,16 @@ const ContinentPage = () => {
     }
   });
 
+  let navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="destinations">
+      <h2 className="season__btn-back" onClick={handleClick}>
+        GO BACK
+      </h2>
       <h1 className="destinations__title">{continent}</h1>
       <h2 className="destinations__subtitle">Choose your destination</h2>
       <div className="destinations__card-wrapper">
